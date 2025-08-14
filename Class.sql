@@ -1,7 +1,9 @@
-create database pst;
-use pst;
+create database class;
+use class;
+
+--- 31st July
 CREATE TABLE Person (
-    PersonID INT IDENTITY(1,1) PRIMARY KEY, -- Auto-increment primary key
+    PersonID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Age INT,
@@ -17,7 +19,7 @@ VALUES
 
 CREATE TABLE MovieRating (
     RatingID INT IDENTITY(1,1) PRIMARY KEY,
-    PersonID INT,         -- FK to Person table
+    PersonID INT,
     MovieName VARCHAR(100),
     Rating INT CHECK (Rating BETWEEN 1 AND 5),
     RatingDate DATE,
@@ -25,7 +27,6 @@ CREATE TABLE MovieRating (
 );
 
 
--- Suppose PersonID 1 and 2 rated movies
 INSERT INTO MovieRating (PersonID, MovieName, Rating, RatingDate)
 VALUES
 (1, 'Inception', 5, '2023-01-01'),
@@ -34,9 +35,9 @@ VALUES
 
 select PersonID, count(*) as 'Rating Count' from MovieRating group by PersonID;
 
-create database rev;
-
-use rev;
+drop database class;
+create database class;
+use class;
 
 CREATE TABLE Users (
     user_id INT PRIMARY KEY,
@@ -96,3 +97,6 @@ from EmployeeLogs as e1
     on e1.log_id = e2.log_id-1
            and e1.emp_id = e2.emp_id;
 
+drop database class;
+create database class;
+use class;

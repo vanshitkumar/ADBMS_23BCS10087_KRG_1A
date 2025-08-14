@@ -1,12 +1,14 @@
-CREATE DATABASE TalentTree;
+CREATE DATABASE exp2;
 
-USE TalentTree;
+USE exp2;
 
+
+-------- Task 1
 CREATE TABLE Employee (
     EmpID INT PRIMARY KEY,
     EmpName VARCHAR(50) NOT NULL,
     Department VARCHAR(50) NOT NULL,
-    ManagerID INT NULL  -- Self-reference to EmpID
+    ManagerID INT NULL
 );
 
 
@@ -14,7 +16,6 @@ ALTER TABLE Employee
 ADD CONSTRAINT FK_Manager FOREIGN KEY (ManagerID) REFERENCES Employee(EmpID);
 
 
--- Insert data into Employee table
 INSERT INTO Employee (EmpID, EmpName, Department, ManagerID)
 VALUES
 (1, 'Alice', 'HR', NULL),        -- Top-level manager
@@ -34,6 +35,7 @@ right join Employee as e
 on  e.ManagerID = m.EmpID;
 
 
+------ Task 2
 create table year_tbl(
     id int,
     year int,
